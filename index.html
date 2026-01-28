@@ -34,7 +34,7 @@
         .p-info { padding: 12px; }
         
         .hidden { display: none; }
-        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 15px; z-index: 1000; width: 320px; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 15px; z-index: 100; width: 160px; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; backdrop-filter: blur(3px); }
         
         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
@@ -44,11 +44,20 @@
 </head>
 <body>
 
-<div class="offer-card"><h3 class="blink">🌟 ধামাকা অফার: এডমিনের কাছে LIC করলে লাইফ টাইম ফ্রি!</h3></div>
+<div class="offer-card"><h3 class="blink">🌟 ধামাকা অফার: এডমিনের কাছে LIC করলে লাইফ টাইম লগইন ফ্রি!</h3></div>
+<a href ="https://docs.google.com/forms/d/e/1FAIpQLScbpAaqfebIV3BFw0_7WVXD7Hq5Mbd-DXK8IVZGWD-dlhVCSA/viewform?usp=header"> LIC করার জন্য ক্লিক করুন</a>
 
 <div class="header">
+    <img src="rrss2.jpeg" alt="qr code" style="display:block; margin:10px auto; width:120px;">
+
+    <img src="slog.jpg" alt="S b logo" style="height:60px; vertical-align:middle;">
     <h1>সতেজ বাজার (Sotej Bazar)</h1>
-    <p>সেরা পণ্য সরাসরি কৃষকের ঘর থেকে</p>
+    <p> ​"টাটকা সবজি, সতেজ মন; কৃষকের হাতেই সমৃদ্ধি এখন।"</p>
+    <p> Email-CPAN7881@GMAIL.COM , WHATSAPP NO 6295419940</p>
+    <p> নোটিশ-বিক্রিত পণ্যের নাম বাংলায় লিখলে পাশে ইংরেজিতে লিখে দেবেন।</p>
+    
+</div>
+
 </div>
 
 <div class="container">
@@ -71,8 +80,8 @@
                 <input type="number" id="pPrice" placeholder="মূল্য">
                 <select id="pCategory">
                     <option value="সবজি">সবজি</option>
-                    <option value="মাছ">মাছ</option>
-                    <option value="মাংস">মাংস</option>
+                    <option value="মাছ/মাংস">মাছ/মাংস</option>
+                    <option value="অন্যান্য">অন্যান্য</option>
                     <option value="মুদি">মুদি</option>
                 </select>
                 <select id="pUnit" style="width: 100px;">
@@ -236,9 +245,9 @@
                         <div class="p-info">
                             <span style="font-size:10px; background:#eee; padding:2px 5px; border-radius:5px">${p.category}</span>
                             <h3 style="margin:5px 0">${p.name}</h3>
-                            <div style="color:var(--primary); font-weight:bold">৳ ${p.price} / ${p.unit}</div>
+                            <div style="color:var(--primary); font-weight:bold">R.S- ${p.price} / ${p.unit}</div>
                             <small>📍 ${p.village}</small><br>
-                            <a href="https://wa.me/88${p.addr}" target="_blank" style="display:block; text-align:center; background:#25D366; color:white; padding:8px; margin-top:8px; border-radius:5px; text-decoration:none; font-size:12px">WhatsApp Order</a>
+                            <a href="https://wa.me/91${p.addr}" target="_blank" style="display:block; text-align:center; background:#25D366; color:white; padding:8px; margin-top:8px; border-radius:5px; text-decoration:none; font-size:12px">WhatsApp Order</a>
                             ${isOwner ? `
                                 <div style="display:flex; gap:5px; margin-top:10px">
                                     <button class="btn-blue" onclick="editP('${p.fireId}')" style="flex:1">Edit</button>
@@ -255,7 +264,7 @@
     window.doLogin = function() {
         const id = document.getElementById('loginId').value;
         const pass = document.getElementById('loginPass').value;
-        if(id === "admin" && pass === "1234") {
+        if(id === "PALCSC" && pass === "Bajrangbali#JY") {
             window.currentUser = "ADMIN";
             showDashboard('admin-tools');
         } else {
@@ -319,6 +328,52 @@
         if(id === 'admin-tools') renderSellersList();
         window.renderMarket();
     };
+     
+    // রাইট ক্লিক এবং শর্টকাট ডিজেবল
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123 || 
+            (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || 
+            (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+            return false;
+        }
+    };
+    
+</script>
+<style>
+    /* ফুটার ডিজাইন */
+    .main-footer {
+        background: var(--dark);
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+        margin-top: 50px;
+        border-radius: 15px 15px 0 0;
+    }
+    .main-footer p { margin: 5px 0; font-size: 14px; opacity: 0.9; }
+    .main-footer .copyright {
+        font-size: 13px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 10px;
+        margin-top: 10px;
+        color: #bdc3c7;
+    }
+    .developer-link { color: var(--primary); text-decoration: none; font-weight: bold; }
+</style>
+
+<footer class="main-footer">
+    <p><strong>সতেজ বাজার (Sotej Bazar)</strong></p>
+    <p>টাটকা সবজি ও মুদি সামগ্রীর বিশ্বস্ত অনলাইন বাজার।</p>
+    
+    <div class="copyright">
+        &copy; <span id="year"></span> PAL271462620010| 
+        Developed by <a href="#" class="developer-link">সতেজ বাজার</a>
+    </div>
+</footer>
+
+<script>
+    // অটোমেটিক বর্তমান বছর সেট করার জন্য
+    document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
