@@ -33,7 +33,9 @@
         .product-card img { width: 100%; height: 180px; object-fit: cover; }
         .p-info { padding: 12px; }
         
-        .hidden { display: none; }
+        .hidden { 
+    display: none !important; 
+}
         .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 15px; z-index: 100; width: 160px; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; backdrop-filter: blur(3px); }
         
@@ -376,4 +378,5 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 </body>
+
 </html>
