@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>সতেজ বাজার - পূর্ণাঙ্গ প্যানেল</title>
+    <title>সতেজ বাজার - কৃষকের হাতেই ভরসা</title>
     <style>
         :root { --primary: #27ae60; --dark: #2c3e50; --red: #e74c3c; --bg: #f4f7f6; --shadow: 0 4px 15px rgba(0,0,0,0.1); }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; color: #333; }
@@ -49,9 +49,12 @@
 </div>
 
 <div class="header">
+     <img src="rrss2.jpeg" alt="qr code" style="display:block; margin:10px auto; width:120px;">
     <img src="slog.jpg" alt="S b logo" style="height:60px; vertical-align:middle;">
     <h1>সতেজ বাজার (Sotej Bazar)</h1>
     <p>"টাটকা সবজি, সতেজ মন; কৃষকের হাতেই সমৃদ্ধি এখন।"</p>
+    <p> Email-CPAN7881@GMAIL.COM , WHATSAPP NO 6295419940</p>
+    <p> নোটিশ-বিক্রিত পণ্যের নাম বাংলায় লিখলে পাশে ইংরেজিতে লিখে দেবেন।</p>
 </div>
 
 <div class="container">
@@ -314,8 +317,33 @@
 </script>
 
 <footer style="background:var(--dark); color:white; text-align:center; padding:20px; margin-top:40px;">
-    <p>&copy; 2024 সতেজ বাজার | Developed by PAL</p>
+    <p>&copy;  PAL271462620010 Developed by PALসতেজ বাজার</p>
 </footer>
 
+    <script>
+    /* ১. রাইট ক্লিক ডিজেবল করা */
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    /* ২. কিবোর্ড শর্টকাট (F12, Ctrl+U, Ctrl+Shift+I) ব্লক করা */
+    document.onkeydown = function(e) {
+        if (e.keyCode == 123 || // F12
+            (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || 
+            (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) { // Ctrl+U (View Source)
+            return false;
+        }
+    };
+
+    /* ৩. পাসওয়ার্ড ফিল্ড থেকে কপি-পেস্ট বন্ধ করা */
+    const passField = document.getElementById('loginPass');
+    if(passField) {
+        passField.oncopy = e => e.preventDefault();
+        passField.onpaste = e => e.preventDefault();
+        passField.oncut = e => e.preventDefault();
+    }
+
+    /* ৪. টেক্সট সিলেকশন বন্ধ করা (পুরো সাইটে) */
+    document.onselectstart = () => false; 
+</script>
 </body>
 </html>
+
