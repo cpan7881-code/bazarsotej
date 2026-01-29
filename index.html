@@ -8,7 +8,9 @@
         :root { --primary: #27ae60; --dark: #2c3e50; --red: #e74c3c; --bg: #f4f7f6; --shadow: 0 4px 15px rgba(0,0,0,0.1); }
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); margin: 0; color: #333; }
         
-        /* এনিমেশন ও কার্ড */
+        /* গুরুত্বপূর্ণ: এটি না থাকলে লগইন বা ড্যাশবোর্ড হাইড হবে না */
+        .hidden { display: none !important; }
+        
         .offer-card { background: #fff; padding: 12px; text-align: center; border-bottom: 2px solid #ddd; }
         .blink { animation: blinker 1.5s linear infinite; color: var(--red); font-weight: bold; }
         @keyframes blinker { 50% { opacity: 0; } }
@@ -16,7 +18,6 @@
         .header { background: var(--primary); color: white; padding: 30px; text-align: center; box-shadow: var(--shadow); }
         .container { max-width: 1000px; margin: auto; padding: 15px; }
         
-        /* ড্যাশবোর্ড ও কার্ড */
         .card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--shadow); margin-bottom: 20px; border: 1px solid #eee; }
         .promo { background: #e8f5e9; border: 2px dashed var(--primary); text-align: center; }
         
@@ -27,16 +28,12 @@
         .btn-red { background: var(--red); color: white; }
         .btn-blue { background: #2980b9; color: white; font-size: 12px; }
 
-        /* মার্কেট গ্রিড */
         .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 15px; margin-top: 20px; }
         .product-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); border: 1px solid #f0f0f0; }
         .product-card img { width: 100%; height: 180px; object-fit: cover; }
         .p-info { padding: 12px; }
         
-        .hidden { 
-    display: none !important; 
-}
-        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 15px; z-index: 100; width: 160px; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
+        .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 25px; border-radius: 15px; z-index: 1000; width: 280px; box-shadow: 0 0 50px rgba(0,0,0,0.3); }
         .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 999; backdrop-filter: blur(3px); }
         
         table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 13px; }
@@ -47,19 +44,14 @@
 <body>
 
 <div class="offer-card"><h3 class="blink">🌟 ধামাকা অফার: এডমিনের কাছে LIC করলে লাইফ টাইম লগইন ফ্রি!</h3></div>
-<a href ="https://docs.google.com/forms/d/e/1FAIpQLScbpAaqfebIV3BFw0_7WVXD7Hq5Mbd-DXK8IVZGWD-dlhVCSA/viewform?usp=header"> LIC করার জন্য ক্লিক করুন</a>
-
-<div class="header">
-    <img src="rrss2.jpeg" alt="qr code" style="display:block; margin:10px auto; width:120px;">
-
-    <img src="slog.jpg" alt="S b logo" style="height:60px; vertical-align:middle;">
-    <h1>সতেজ বাজার (Sotej Bazar)</h1>
-    <p> ​"টাটকা সবজি, সতেজ মন; কৃষকের হাতেই সমৃদ্ধি এখন।"</p>
-    <p> Email-CPAN7881@GMAIL.COM , WHATSAPP NO 6295419940</p>
-    <p> নোটিশ-বিক্রিত পণ্যের নাম বাংলায় লিখলে পাশে ইংরেজিতে লিখে দেবেন।</p>
-    
+<div style="text-align:center; padding: 10px;">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScbpAaqfebIV3BFw0_7WVXD7Hq5Mbd-DXK8IVZGWD-dlhVCSA/viewform?usp=header" target="_blank">LIC করার জন্য ক্লিক করুন</a>
 </div>
 
+<div class="header">
+    <img src="slog.jpg" alt="S b logo" style="height:60px; vertical-align:middle;">
+    <h1>সতেজ বাজার (Sotej Bazar)</h1>
+    <p>"টাটকা সবজি, সতেজ মন; কৃষকের হাতেই সমৃদ্ধি এখন।"</p>
 </div>
 
 <div class="container">
@@ -70,7 +62,7 @@
 
     <div id="dashboard-area" class="hidden card">
         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-            <h2 id="dash-title" style="margin:0">ড্যাশবোর্ড</h2>
+            <h2 style="margin:0">ড্যাশবোর্ড</h2>
             <button class="btn btn-red" onclick="location.reload()">লগ আউট</button>
         </div>
 
@@ -83,17 +75,17 @@
                 <select id="pCategory">
                     <option value="সবজি">সবজি</option>
                     <option value="মাছ/মাংস">মাছ/মাংস</option>
-                    <option value="অন্যান্য">অন্যান্য</option>
                     <option value="মুদি">মুদি</option>
+                    <option value="অন্যান্য">অন্যান্য</option>
                 </select>
-                <select id="pUnit" style="width: 100px;">
+                <select id="pUnit">
                     <option value="কেজি">কেজি</option>
                     <option value="লিটার">লিটার</option>
                     <option value="পিস">পিস</option>
                 </select>
             </div>
             <input type="text" id="pVillage" placeholder="আপনার গ্রাম">
-            <input type="text" id="pAddr" placeholder="মোবাইল নম্বর (WA)">
+            <input type="text" id="pAddr" placeholder="মোবাইল নম্বর (WhatsApp)">
             <input type="file" id="pImage" accept="image/*" onchange="processImg()">
             <button id="save-btn" class="btn btn-green" onclick="saveProduct()">পাবলিশ করুন</button>
         </div>
@@ -117,18 +109,14 @@
     </div>
 
     <div id="market-section">
-        <input type="text" id="search" onkeyup="renderMarket()" placeholder="🔍 পণ্য বা গ্রাম দিয়ে খুঁজুন..." style="border: 2px solid var(--primary);">
+        <input type="text" id="search" onkeyup="renderMarket()" placeholder="🔍 পণ্য বা গ্রাম দিয়ে খুঁজুন..." style="border: 2px solid var(--primary);">
         <div class="market-grid" id="marketDisplay"></div>
-    </div>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <button onclick="openLogin()" style="background:none; border:none; color:#ccc; font-size:10px; cursor:pointer;">Admin Access</button>
     </div>
 </div>
 
 <div id="overlay" class="overlay hidden" onclick="closeLogin()"></div>
 <div id="login-modal" class="modal hidden">
-    <h3 style="margin-top:0">লগইন</h3>
+    <h3 style="margin-top:0">সেলার লগইন</h3>
     <input type="text" id="loginId" placeholder="ইউজার আইডি">
     <input type="password" id="loginPass" placeholder="পাসওয়ার্ড">
     <button class="btn btn-green" onclick="doLogin()">প্রবেশ করুন</button>
@@ -156,7 +144,7 @@
     let products = [];
     let sellers = [];
 
-    // ডাটা লিসেনার
+    // ডাটা লোড করা
     onValue(ref(db, 'products'), (snap) => {
         const data = snap.val();
         products = data ? Object.keys(data).map(key => ({...data[key], fireId: key})) : [];
@@ -169,7 +157,74 @@
         if(window.currentUser === "ADMIN") renderSellersList();
     });
 
-    // ছবি রিসাইজ
+    // ফাংশনগুলো উইন্ডোতে বাইন্ড করা যাতে কাজ করে
+    window.openLogin = () => { document.getElementById('login-modal').classList.remove('hidden'); document.getElementById('overlay').classList.remove('hidden'); };
+    window.closeLogin = () => { document.getElementById('login-modal').classList.add('hidden'); document.getElementById('overlay').classList.add('hidden'); };
+
+    window.doLogin = function() {
+        const id = document.getElementById('loginId').value;
+        const pass = document.getElementById('loginPass').value;
+        
+        if(id === "PALCSC" && pass === "Bajrangbali#JY") {
+            window.currentUser = "ADMIN";
+            showDashboardUI('admin-tools');
+        } else {
+            const s = sellers.find(x => x.id === id && x.pass === pass);
+            if(s) {
+                if(Date.now() > s.expiry) alert("আপনার মেয়াদের সময় শেষ!");
+                else {
+                    window.currentUser = s.id;
+                    showDashboardUI('seller-tools');
+                    const days = Math.ceil((s.expiry - Date.now()) / (1000*60*60*24));
+                    document.getElementById('validity-info').innerText = "⏳ মেয়াদের বাকি " + days + " দিন";
+                }
+            } else alert("ভুল আইডি বা পাসওয়ার্ড!");
+        }
+    };
+
+    function showDashboardUI(toolId) {
+        window.closeLogin();
+        document.getElementById('promo-box').classList.add('hidden');
+        document.getElementById('dashboard-area').classList.remove('hidden');
+        document.getElementById('seller-tools').classList.add('hidden');
+        document.getElementById('admin-tools').classList.add('hidden');
+        document.getElementById(toolId).classList.remove('hidden');
+        if(toolId === 'admin-tools') renderSellersList();
+        window.renderMarket();
+    }
+
+    // এডমিন: নতুন সেলার তৈরি
+    window.makeSeller = function() {
+        const id = document.getElementById('newSid').value;
+        const pass = document.getElementById('newSpass').value;
+        if(id && pass) {
+            const exp = Date.now() + (30 * 24 * 60 * 60 * 1000); // ৩০ দিন মেয়াদ
+            set(ref(db, 'sellers/' + id), { id, pass, expiry: exp }).then(() => alert("সেলার আইডি তৈরি হয়েছে!"));
+        }
+    };
+
+    function renderSellersList() {
+        const tb = document.getElementById('sellerTableBody');
+        tb.innerHTML = sellers.map(s => `
+            <tr>
+                <td>${s.id}</td>
+                <td style="color:blue">${s.pass}</td>
+                <td>${new Date(s.expiry).toLocaleDateString()}</td>
+                <td>
+                    <button class="btn-blue" onclick="renewSeller('${s.id}')">Renew</button>
+                    <button class="btn-red" onclick="deleteSeller('${s.id}')">X</button>
+                </td>
+            </tr>`).join('');
+    }
+
+    window.renewSeller = (sid) => {
+        const s = sellers.find(x => x.id === sid);
+        update(ref(db, 'sellers/' + sid), { expiry: s.expiry + (30*24*60*60*1000) });
+    };
+
+    window.deleteSeller = (sid) => { if(confirm("ডিলিট করবেন?")) remove(ref(db, 'sellers/' + sid)); };
+
+    // প্রোডাক্ট ম্যানেজমেন্ট
     window.processImg = function() {
         const file = document.getElementById('pImage').files[0];
         if(!file) return;
@@ -180,7 +235,7 @@
             img.src = e.target.result;
             img.onload = () => {
                 const canvas = document.createElement('canvas');
-                const MAX_WIDTH = 500;
+                const MAX_WIDTH = 400;
                 let width = img.width, height = img.height;
                 if (width > MAX_WIDTH) { height *= MAX_WIDTH / width; width = MAX_WIDTH; }
                 canvas.width = width; canvas.height = height;
@@ -190,7 +245,6 @@
         };
     };
 
-    // পণ্য সেভ ও এডিট
     window.saveProduct = function() {
         const name = document.getElementById('pName').value;
         const price = document.getElementById('pPrice').value;
@@ -205,39 +259,16 @@
         if(window.tempImg) pData.img = window.tempImg;
 
         if(window.editingId) {
-            update(ref(db, 'products/' + window.editingId), pData).then(() => {
-                alert("আপডেট হয়েছে!");
-                resetForm();
-            });
+            update(ref(db, 'products/' + window.editingId), pData).then(() => { alert("আপডেট হয়েছে!"); resetForm(); });
         } else {
-            push(ref(db, 'products'), pData).then(() => {
-                alert("পাবলিশ হয়েছে!");
-                resetForm();
-            });
+            push(ref(db, 'products'), pData).then(() => { alert("পাবলিশ হয়েছে!"); resetForm(); });
         }
     };
 
-    window.editP = (id) => {
-        const p = products.find(x => x.fireId === id);
-        document.getElementById('pName').value = p.name;
-        document.getElementById('pPrice').value = p.price;
-        document.getElementById('pVillage').value = p.village;
-        document.getElementById('pAddr').value = p.addr;
-        window.editingId = id;
-        document.getElementById('save-btn').innerText = "আপডেট করুন";
-        window.scrollTo(0,0);
-    };
-
-    window.delP = (id) => {
-        if(confirm("ডিলিট করবেন?")) remove(ref(db, 'products/' + id));
-    };
-
-    // মার্কেট রেন্ডার
     window.renderMarket = function() {
         const d = document.getElementById('marketDisplay');
         const q = document.getElementById('search').value.toLowerCase();
         d.innerHTML = "";
-        
         products.forEach(p => {
             if (p.name.toLowerCase().includes(q) || p.village.toLowerCase().includes(q)) {
                 const isOwner = (window.currentUser === p.seller || window.currentUser === "ADMIN");
@@ -248,7 +279,7 @@
                             <span style="font-size:10px; background:#eee; padding:2px 5px; border-radius:5px">${p.category}</span>
                             <h3 style="margin:5px 0">${p.name}</h3>
                             <div style="color:var(--primary); font-weight:bold">R.S- ${p.price} / ${p.unit}</div>
-                            <small>📍 ${p.village}</small><br>
+                            <small>📍 ${p.village}</small>
                             <a href="https://wa.me/91${p.addr}" target="_blank" style="display:block; text-align:center; background:#25D366; color:white; padding:8px; margin-top:8px; border-radius:5px; text-decoration:none; font-size:12px">WhatsApp Order</a>
                             ${isOwner ? `
                                 <div style="display:flex; gap:5px; margin-top:10px">
@@ -262,121 +293,29 @@
         });
     };
 
-    // লগইন ও ড্যাশবোর্ড
-    window.doLogin = function() {
-        const id = document.getElementById('loginId').value;
-        const pass = document.getElementById('loginPass').value;
-        if(id === "PALCSC" && pass === "Bajrangbali#JY") {
-            window.currentUser = "ADMIN";
-            showDashboard('admin-tools');
-        } else {
-            const s = sellers.find(x => x.id === id && x.pass === pass);
-            if(s) {
-                if(Date.now() > s.expiry) alert("মেয়াদ শেষ!");
-                else {
-                    window.currentUser = s.id;
-                    showDashboard('seller-tools');
-                    const days = Math.ceil((s.expiry - Date.now()) / (1000*60*60*24));
-                    document.getElementById('validity-info').innerText = "⏳ মেয়াদের বাকি " + days + " দিন";
-                }
-            } else alert("ভুল তথ্য!");
-        }
+    window.editP = (id) => {
+        const p = products.find(x => x.fireId === id);
+        document.getElementById('pName').value = p.name;
+        document.getElementById('pPrice').value = p.price;
+        document.getElementById('pVillage').value = p.village;
+        document.getElementById('pAddr').value = p.addr;
+        window.editingId = id;
+        document.getElementById('save-btn').innerText = "আপডেট করুন";
+        window.scrollTo(0,0);
     };
 
-    // সেলার ম্যানেজমেন্ট
-    window.makeSeller = function() {
-        const id = document.getElementById('newSid').value;
-        const pass = document.getElementById('newSpass').value;
-        if(id && pass) {
-            const exp = Date.now() + (30 * 24 * 60 * 60 * 1000);
-            set(ref(db, 'sellers/' + id), { id, pass, expiry: exp }).then(() => alert("সেলার তৈরি!"));
-        }
-    };
-
-    window.renewSeller = (sid) => {
-        const s = sellers.find(x => x.id === sid);
-        update(ref(db, 'sellers/' + sid), { expiry: s.expiry + (30*24*60*60*1000) }).then(()=>alert("রিনিউ হয়েছে"));
-    };
-
-    window.deleteSeller = (sid) => { if(confirm("সেলার ডিলিট করবেন?")) remove(ref(db, 'sellers/' + sid)); };
-
-    function renderSellersList() {
-        const tb = document.getElementById('sellerTableBody');
-        tb.innerHTML = sellers.map(s => `
-            <tr>
-                <td>${s.id}</td>
-                <td style="color:blue; font-weight:bold">${s.pass}</td>
-                <td>${new Date(s.expiry).toLocaleDateString()}</td>
-                <td>
-                    <button class="btn-blue" onclick="renewSeller('${s.id}')">Renew</button>
-                    <button class="btn-red" onclick="deleteSeller('${s.id}')">X</button>
-                </td>
-            </tr>`).join('');
-    }
+    window.delP = (id) => { if(confirm("ডিলিট করবেন?")) remove(ref(db, 'products/' + id)); };
 
     function resetForm() {
         document.getElementById('pName').value = ""; document.getElementById('pPrice').value = "";
         window.tempImg = ""; window.editingId = null;
         document.getElementById('save-btn').innerText = "পাবলিশ করুন";
     }
-
-    window.openLogin = () => { document.getElementById('login-modal').classList.remove('hidden'); document.getElementById('overlay').classList.remove('hidden'); };
-    window.closeLogin = () => { document.getElementById('login-modal').classList.add('hidden'); document.getElementById('overlay').classList.add('hidden'); };
-    window.showDashboard = (id) => {
-        closeLogin();
-        document.getElementById('promo-box').classList.add('hidden');
-        document.getElementById('dashboard-area').classList.remove('hidden');
-        document.getElementById(id).classList.remove('hidden');
-        if(id === 'admin-tools') renderSellersList();
-        window.renderMarket();
-    };
-     
-    // রাইট ক্লিক এবং শর্টকাট ডিজেবল
-    document.addEventListener('contextmenu', event => event.preventDefault());
-    document.onkeydown = function(e) {
-        if (e.keyCode == 123 || 
-            (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0))) || 
-            (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
-            return false;
-        }
-    };
-    
 </script>
-<style>
-    /* ফুটার ডিজাইন */
-    .main-footer {
-        background: var(--dark);
-        color: white;
-        text-align: center;
-        padding: 20px 10px;
-        margin-top: 50px;
-        border-radius: 15px 15px 0 0;
-    }
-    .main-footer p { margin: 5px 0; font-size: 14px; opacity: 0.9; }
-    .main-footer .copyright {
-        font-size: 13px;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        padding-top: 10px;
-        margin-top: 10px;
-        color: #bdc3c7;
-    }
-    .developer-link { color: var(--primary); text-decoration: none; font-weight: bold; }
-</style>
 
-<footer class="main-footer">
-    <p><strong>সতেজ বাজার (Sotej Bazar)</strong></p>
-    <p>টাটকা সবজি ও মুদি সামগ্রীর বিশ্বস্ত অনলাইন বাজার।</p>
-    
-    <div class="copyright">
-        &copy; <span id="year"></span> PAL271462620010| 
-        Developed by <a href="#" class="developer-link">সতেজ বাজার</a>
-    </div>
+<footer style="background:var(--dark); color:white; text-align:center; padding:20px; margin-top:40px;">
+    <p>&copy; 2024 সতেজ বাজার | Developed by PAL</p>
 </footer>
 
-<script>
-    // অটোমেটিক বর্তমান বছর সেট করার জন্য
-    document.getElementById('year').textContent = new Date().getFullYear();
-</script>
 </body>
-
 </html>
